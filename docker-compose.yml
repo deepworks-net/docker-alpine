@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  latest:
+    image: deepworks/alpine:latest
+    command: /sbin/init
+    build:
+      context: .
+      # These args are not required, but used to override the default values!
+      args:
+        image_name: deepworks/alpine
+        image_version: 1.0.0
+        base_image_name: alpine
+        base_image_version: 3.15.0
+        THEDIRECTORY: /.deepworks/
+        THEAUTHOR: Deepworks
+        THEEMAIL: support@deepworks.net

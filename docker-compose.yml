@@ -5,12 +5,11 @@ services:
     command: /sbin/init
     build:
       context: .
-      # These args are not required, but used to override the default values!
       args:
-        image_name: deepworks/alpine
-        image_version: 1.0.0
-        base_image_name: alpine
-        base_image_version: 3.15.0
-        THEDIRECTORY: /.deepworks/
-        THEAUTHOR: Deepworks
-        THEEMAIL: support@deepworks.net
+        image_name: ${image_name}
+        image_version: ${image_version}
+        base_image_name: ${base_image_name}
+        base_image_version: ${base_image_version}
+        THEDIRECTORY: ${THEDIRECTORY}
+        THEAUTHOR: ${THEAUTHOR}
+        THEEMAIL: ${THEEMAIL}

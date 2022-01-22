@@ -1,45 +1,32 @@
 # Declare Vars - These are required and need to be passed in/set via Environmental Variable!
-ARG image_name="deepworks/alpine"
-ARG image_version="0.0.0"
-ARG base_image_name="alpine"
-ARG base_image_version="3.15.0"
-ARG THEAUTHOR="The Author"
-ARG THEEMAIL="author@myemail.net"
-ARG THEDIRECTORY="/mycontent/"
+ARG base_image_name
+ARG base_image_version
 
 # Pull the base image
 FROM ${base_image_name}:${base_image_version} AS base
-# Declare Vars - These are required and need to be passed in/set via Environmental Variable!
-ARG image_name="deepworks/alpine"
-ARG image_version="0.0.0"
-ARG base_image_name="alpine"
-ARG base_image_version="3.15.0"
-ARG THEAUTHOR="The Author"
-ARG THEEMAIL="author@myemail.net"
-ARG THEDIRECTORY="/mycontent/"
-
-# Set the Workdir
-WORKDIR /tmp
-
-# Install updates
-COPY scripts/install-packages.sh .
-# Add Information
-COPY scripts/utils/info.sh .
-
+#Set The WorkDir
+WORKDIR /tmp/
+ARG image_name
+ARG image_version
+ARG base_image_name
+ARG base_image_version
+ARG THEAUTHOR
+ARG THEEMAIL
+ARG THEDIRECTORY
+# Copy Scripts
+COPY scripts/install-packages.sh scripts/utils/info.sh ./
 # Run the Scripts
-RUN ./info.sh && rm ./info.sh && \
-        ./install-packages.sh && rm ./install-packages.sh
+RUN ./info.sh && ./install-packages.sh && rm ./install-packages.sh && rm ./info.sh
 
 # Add all changes to scratch image
-FROM scratch
+FROM scratch AS final
 # Declare Vars - These are meant to be passed in/set via Environmental Variable!
-ARG image_name="deepworks/alpine"
-ARG image_version="0.0.0"
-ARG base_image_name="alpine"
-ARG base_image_version="3.15.0"
-ARG THEAUTHOR="The Author"
-ARG THEEMAIL="author@myemail.net"
-ARG THEDIRECTORY="/mycontent/"
+ARG image_name
+ARG image_version
+ARG base_image_name
+ARG base_image_version
+ARG THEAUTHOR
+ARG THEEMAIL
 
 # Set the WorkDir
 WORKDIR /
@@ -52,7 +39,8 @@ LABEL maintainer="${THEAUTHOR}" \
         osimage="${base_image_name}:${base_image_version}" \
         baseimage="${image_name}:${image_version}" \
         image="${image_name}" \
-        version="${image_version}"
+        version="${image_version}" \
+        email="${THEEMAIL}"
 
 # Set locales
 #ENV LC_ALL en_US.UTF-8

@@ -1,19 +1,12 @@
 #!/bin/sh
 
-# Build An Image Script!
-echo "Building Alpine Images"
-
-# Set Variables
-IMAGE_NAME="deepworks/alpine";
-
 # load functions
-source "scripts/utils/funcs.sh"
+. "scripts/utils/funcs.sh"
+. "scripts/vars.sh"
 
-# Set Version Variables
-BASEVER=1
-BASEVER_WHOLE=1.0
-BASEVER_FULL=1.0.0
+# Define Vars (until depreciated in funcs.sh)
+IMAGE_NAME="$image_name";
 
-# Build Alpine Images
-echo "Building ${IMAGE_NAME}:latest (v${BASEVER_FULL})"
-BUILD_IMAGE "latest" "latest"
+# Build Images
+echo "Building $image_name:latest (v$image_version)"
+BUILD_IMAGE "latest" "latest" "$image_version"

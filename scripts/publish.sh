@@ -1,20 +1,13 @@
 #!/bin/sh
 
-# Publish An Image Script!
-echo "Publishing Alpine Images"
-
-# Set Variables
-IMAGE_NAME="deepworks/alpine";
-
 # load functions
-source "scripts/utils/funcs.sh"
+. "scripts/utils/funcs.sh"
+. "scripts/vars.sh"
 
-# Set Version Variables
-BASEVER=1
-BASEVER_WHOLE=1.0
-BASEVER_FULL=1.0.0
+# Define Vars (until depreciated in funcs.sh)
+IMAGE_NAME="$image_name";
 
 # Publish Alpine Images
-echo "Publishing ${IMAGE_NAME}:latest (v${BASEVER_FULL})"
-PUBLISH_IMAGE "latest"
+echo "Publishing ${image_name}:latest (v${image_version})"
+PUBLISH_IMAGE "latest" "$image_version"
 

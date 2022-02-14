@@ -1,15 +1,15 @@
-version: "3.7"
+version: "3.9"
 services:
   latest:
-    image: deepworks/alpine:latest
-    command: /sbin/init
+    image: ${IMAGE_NAME:?err}:${IMAGE_VERSION:-latest}
+    command: ${INIT_COMMAND}
     build:
       context: .
       args:
-        image_name: ${image_name}
-        image_version: ${image_version}
-        base_image_name: ${base_image_name}
-        base_image_version: ${base_image_version}
-        THEDIRECTORY: ${THEDIRECTORY}
-        THEAUTHOR: ${THEAUTHOR}
-        THEEMAIL: ${THEEMAIL}
+        IMAGE_NAME: ${IMAGE_NAME:?err}
+        IMAGE_VERSION: ${IMAGE_VERSION:?err}
+        BASE_IMAGE_NAME: ${BASE_IMAGE_NAME:?err}
+        BASE_IMAGE_VERSION: ${BASE_IMAGE_VERSION:?err}
+        HOMEDIR: ${HOMEDIR:?err}
+        MAINTAINER: ${MAINTAINER:?err}
+        THEEMAIL: ${THEEMAIL:?err}

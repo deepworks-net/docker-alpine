@@ -1,31 +1,31 @@
 # Declare Vars - These are required and need to be passed in/set via Environmental Variable!
-ARG base_image_name
-ARG base_image_version
+ARG BASE_IMAGE_NAME
+ARG BASE_IMAGE_VERSION
 
 # Pull the base image
-FROM ${base_image_name}:${base_image_version} AS base
-#Set The WorkDir
-WORKDIR /tmp/
-ARG image_name
-ARG image_version
-ARG base_image_name
-ARG base_image_version
-ARG THEAUTHOR
-ARG THEEMAIL
-ARG THEDIRECTORY
+FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
 # Copy Scripts
-COPY scripts/install-packages.sh scripts/utils/info.sh ./
+COPY . /tmp/build
+# Set the Workdir
+WORKDIR /tmp/build
+ARG IMAGE_NAME
+ARG IMAGE_VERSION
+ARG BASE_IMAGE_NAME
+ARG BASE_IMAGE_VERSION
+ARG MAINTAINER
+ARG THEEMAIL
+ARG HOMEDIR
 # Run the Scripts
-RUN ./info.sh && ./install-packages.sh && rm ./install-packages.sh && rm ./info.sh
+RUN ./utils/info.sh && ./install-packages.sh && rm -R ../build
 
 # Add all changes to scratch image
 FROM scratch AS final
 # Declare Vars - These are meant to be passed in/set via Environmental Variable!
-ARG image_name
-ARG image_version
-ARG base_image_name
-ARG base_image_version
-ARG THEAUTHOR
+ARG IMAGE_NAME
+ARG IMAGE_VERSION
+ARG BASE_IMAGE_NAME
+ARG BASE_IMAGE_VERSION
+ARG MAINTAINER
 ARG THEEMAIL
 
 # Set the WorkDir
@@ -35,18 +35,18 @@ WORKDIR /
 COPY --from=base / /
 
 # Set Metadata
-LABEL maintainer="${THEAUTHOR}" \
-        osimage="${base_image_name}:${base_image_version}" \
-        baseimage="${image_name}:${image_version}" \
-        image="${image_name}" \
-        version="${image_version}" \
+LABEL maintainer="${MAINTAINER}" \
+        osimage="${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION}" \
+        baseimage="${IMAGE_NAME}:${IMAGE_VERSION}" \
+        image="${IMAGE_NAME}" \
+        version="${IMAGE_VERSION}" \
         email="${THEEMAIL}"
 
 # Set locales
 #ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
-ENV MAINTAINER "${THEAUTHOR}"
+ENV MAINTAINER "${MAINTAINER}"
 
 # No Healthcheck for this base image
 HEALTHCHECK NONE

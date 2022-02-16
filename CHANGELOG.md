@@ -2,6 +2,9 @@
 ## deepworks/alpine
 latest, 1, 1.0 all point to the latest version below:
 
+## (02/13/2022) 1.0.6:
+- Fixed issue with incorrect paths for the info file
+
 ## (02/13/2022) 1.0.5:
 - Updated compose version to 3.9
 - Updated docker-utils to v0.2.0-beta.rc2

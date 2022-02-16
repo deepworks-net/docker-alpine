@@ -5,6 +5,7 @@ ARG BASE_IMAGE_VERSION
 # Pull the base image
 FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
 # Copy Scripts
+COPY ./utils /tmp/build
 COPY . /tmp/build
 # Set the Workdir
 WORKDIR /tmp/build
@@ -16,7 +17,7 @@ ARG MAINTAINER
 ARG THEEMAIL
 ARG HOMEDIR
 # Run the Scripts
-RUN ./utils/info.sh && ./install-packages.sh && rm -R ../build
+RUN ./info.sh && ./install-packages.sh && rm -R ../build
 
 # Add all changes to scratch image
 FROM scratch AS final

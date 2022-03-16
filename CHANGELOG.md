@@ -2,15 +2,18 @@
 ## deepworks/alpine
 latest, 1, 1.0 all point to the latest version below:
 
-## (02/16/2022) 1.0.6:
+## (03/15/2022) v1.0.7:
+- Updated Docker Utils to v0.2.2-beta and rebuilt containers
+
+## (02/16/2022) v1.0.6:
 - Fixed issue with incorrect paths for the info file
 
-## (02/13/2022) 1.0.5:
+## (02/13/2022) v1.0.5:
 - Updated compose version to 3.9
-- Updated docker-utils to v0.2.0-beta.rc2
+- Updated docker-utils to v0.2.0-beta
 - Changed folder structure and added new files
 
-### (01/21/2022) 1.0.4:
+### (01/21/2022) v1.0.4:
 - Added .env file to hold the basic build vars
 - Converted Compose args to variables
 - Optimized Dockerfile
@@ -19,5 +22,5 @@ latest, 1, 1.0 all point to the latest version below:
 - Added vars.sh script that can be used to parse the .env file
 - Updated the change log
 
-### (01/17/2022) 1.0.0:
+### (01/17/2022) v1.0.0:
 - Initial Build

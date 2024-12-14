@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   latest:
     image: ${IMAGE_NAME:?err}:${IMAGE_VERSION:-latest}

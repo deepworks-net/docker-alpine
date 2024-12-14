@@ -1,5 +1,10 @@
 # deepworks/alpine Changelog
-### Latest Release: v1.1.0 (February 1st, 2023)
+### Latest Release: v1.2.0 (December 14, 2024)
+- Updated compose to latest version (by removing it)
+- Updated docker file
+- Updated license
+
+### v1.1.0 (February 1st, 2023)
 - Upgraded to MIT License
 
 ### v1.0.7 (March 15th, 2022)

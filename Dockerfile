@@ -4,6 +4,7 @@ ARG BASE_IMAGE_VERSION
 
 # Pull the base image
 FROM ${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} AS base
+
 # Copy Scripts
 COPY ./utils /tmp/build
 COPY . /tmp/build
@@ -44,10 +45,9 @@ LABEL maintainer="${MAINTAINER}" \
         email="${THEEMAIL}"
 
 # Set locales
-#ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV MAINTAINER "${MAINTAINER}"
 
-# No Healthcheck for this base image
+# No Healthcheck
 HEALTHCHECK NONE

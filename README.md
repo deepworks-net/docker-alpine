@@ -1,5 +1,7 @@
 # Deepworks Alpine Image 
-[![Stage](https://img.shields.io/badge/stage-General%20release-blue)](#) [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/deepworks/alpine/latest)](https://hub.docker.com/r/deepworks/alpine) ![Maintained](https://img.shields.io/badge/maintained-yes-brightgreen.svg)
+![Maintained](https://img.shields.io/badge/maintained-no-orange.svg)
+
+**NOTE**: This image repository is no longer maintained and is preserved for archive purposes. Newer Alpine image maintenance has been moved to [this repository](https://github.com/deepworks-net/docker-base-images)
 
 ## Overview
 The Deepworks Alpine Image is a lightweight, easy-to-use base image for many of Deepworks' projects. This image is based on Docker Alpine and is always up-to-date with the latest version.
@@ -8,10 +10,7 @@ The Deepworks Alpine Image is a lightweight, easy-to-use base image for many of 
 The Deepworks Alpine Image is based on Alpine Linux version 3.15.0, with any necessary updates. It's simple, straightforward, and easy to use.
 
 ## Information 
-[![Tags](https://img.shields.io/badge/deepworks/alpine-%20latest%20-blue.svg)](https://hub.docker.com/r/deepworks/alpine/latest) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/deepworks/alpine/latest) [![Built](https://img.shields.io/badge/Built-03/15/2022-blue.svg)](#)
-
-## Security 
-![Vulnerabilities](https://img.shields.io/badge/Vulnerabilities-0-brightgreen)
+[![Built](https://img.shields.io/badge/Built-03/15/2022-blue.svg)](#)
 
 ## Dependencies 
 [![Alpine Image](https://img.shields.io/badge/alpine-3.15.0-blue)](https://hub.docker.com/_/alpine)
